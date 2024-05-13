@@ -10,6 +10,10 @@
 		190183822BF26BAE000D954A /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 190183812BF26BAE000D954A /* .gitignore */; };
 		190183842BF26BBE000D954A /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 190183832BF26BBE000D954A /* LICENSE */; };
 		190183862BF26BCC000D954A /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 190183852BF26BCC000D954A /* README.md */; };
+		190183882BF2962D000D954A /* TitleLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190183872BF2962D000D954A /* TitleLabelView.swift */; };
+		1901838A2BF29862000D954A /* MoviesCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190183892BF29862000D954A /* MoviesCarouselView.swift */; };
+		1901838C2BF2BC07000D954A /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1901838B2BF2BC07000D954A /* FavoritesView.swift */; };
+		1901838E2BF2BC1E000D954A /* WatchedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1901838D2BF2BC1E000D954A /* WatchedView.swift */; };
 		194F78DD2BE97DCA004ABCA0 /* PopcornSwirlApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194F78DC2BE97DCA004ABCA0 /* PopcornSwirlApp.swift */; };
 		194F78DF2BE97DCA004ABCA0 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194F78DE2BE97DCA004ABCA0 /* HomeView.swift */; };
 		194F78E32BE97DCE004ABCA0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 194F78E22BE97DCE004ABCA0 /* Assets.xcassets */; };
@@ -47,6 +51,10 @@
 		190183812BF26BAE000D954A /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		190183832BF26BBE000D954A /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		190183852BF26BCC000D954A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		190183872BF2962D000D954A /* TitleLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleLabelView.swift; sourceTree = "<group>"; };
+		190183892BF29862000D954A /* MoviesCarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesCarouselView.swift; sourceTree = "<group>"; };
+		1901838B2BF2BC07000D954A /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
+		1901838D2BF2BC1E000D954A /* WatchedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchedView.swift; sourceTree = "<group>"; };
 		194F78D92BE97DCA004ABCA0 /* PopcornSwirl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PopcornSwirl.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		194F78DC2BE97DCA004ABCA0 /* PopcornSwirlApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopcornSwirlApp.swift; sourceTree = "<group>"; };
 		194F78DE2BE97DCA004ABCA0 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -91,6 +99,47 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1901838F2BF2C7F2000D954A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				190183902BF2C804000D954A /* Screens */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		190183902BF2C804000D954A /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				194F790E2BEA162C004ABCA0 /* ContentView.swift */,
+				194F78DE2BE97DCA004ABCA0 /* HomeView.swift */,
+				1901838B2BF2BC07000D954A /* FavoritesView.swift */,
+				1901838D2BF2BC1E000D954A /* WatchedView.swift */,
+				194F79082BE9813B004ABCA0 /* MovieListView.swift */,
+				194F790A2BE982AC004ABCA0 /* MovieDetailView.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		190183912BF2C8B3000D954A /* PSViews */ = {
+			isa = PBXGroup;
+			children = (
+				190183872BF2962D000D954A /* TitleLabelView.swift */,
+				190183892BF29862000D954A /* MoviesCarouselView.swift */,
+				194F79142BEA40E8004ABCA0 /* MovieCardView.swift */,
+				194F79122BEA3DAC004ABCA0 /* MovieRow.swift */,
+				194F79102BEA17DB004ABCA0 /* AdView.swift */,
+			);
+			path = PSViews;
+			sourceTree = "<group>";
+		};
+		190183922BF2C957000D954A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				194F790C2BE98503004ABCA0 /* Movie.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		194F78D02BE97DCA004ABCA0 = {
 			isa = PBXGroup;
 			children = (
@@ -118,14 +167,9 @@
 			isa = PBXGroup;
 			children = (
 				194F78DC2BE97DCA004ABCA0 /* PopcornSwirlApp.swift */,
-				194F790E2BEA162C004ABCA0 /* ContentView.swift */,
-				194F78DE2BE97DCA004ABCA0 /* HomeView.swift */,
-				194F79082BE9813B004ABCA0 /* MovieListView.swift */,
-				194F79122BEA3DAC004ABCA0 /* MovieRow.swift */,
-				194F79142BEA40E8004ABCA0 /* MovieCardView.swift */,
-				194F790A2BE982AC004ABCA0 /* MovieDetailView.swift */,
-				194F79102BEA17DB004ABCA0 /* AdView.swift */,
-				194F790C2BE98503004ABCA0 /* Movie.swift */,
+				1901838F2BF2C7F2000D954A /* Views */,
+				190183912BF2C8B3000D954A /* PSViews */,
+				190183922BF2C957000D954A /* Model */,
 				194F78E22BE97DCE004ABCA0 /* Assets.xcassets */,
 				194F78E42BE97DCE004ABCA0 /* Preview Content */,
 			);
@@ -290,12 +334,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				190183882BF2962D000D954A /* TitleLabelView.swift in Sources */,
+				1901838A2BF29862000D954A /* MoviesCarouselView.swift in Sources */,
 				194F790B2BE982AC004ABCA0 /* MovieDetailView.swift in Sources */,
 				194F79132BEA3DAC004ABCA0 /* MovieRow.swift in Sources */,
 				194F78DF2BE97DCA004ABCA0 /* HomeView.swift in Sources */,
 				194F790F2BEA162C004ABCA0 /* ContentView.swift in Sources */,
 				194F79152BEA40E8004ABCA0 /* MovieCardView.swift in Sources */,
 				194F79112BEA17DB004ABCA0 /* AdView.swift in Sources */,
+				1901838E2BF2BC1E000D954A /* WatchedView.swift in Sources */,
+				1901838C2BF2BC07000D954A /* FavoritesView.swift in Sources */,
 				194F790D2BE98503004ABCA0 /* Movie.swift in Sources */,
 				194F79092BE9813B004ABCA0 /* MovieListView.swift in Sources */,
 				194F78DD2BE97DCA004ABCA0 /* PopcornSwirlApp.swift in Sources */,
