@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		190183822BF26BAE000D954A /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 190183812BF26BAE000D954A /* .gitignore */; };
+		190183842BF26BBE000D954A /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 190183832BF26BBE000D954A /* LICENSE */; };
+		190183862BF26BCC000D954A /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 190183852BF26BCC000D954A /* README.md */; };
 		194F78DD2BE97DCA004ABCA0 /* PopcornSwirlApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194F78DC2BE97DCA004ABCA0 /* PopcornSwirlApp.swift */; };
 		194F78DF2BE97DCA004ABCA0 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194F78DE2BE97DCA004ABCA0 /* HomeView.swift */; };
 		194F78E32BE97DCE004ABCA0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 194F78E22BE97DCE004ABCA0 /* Assets.xcassets */; };
@@ -41,6 +44,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		190183812BF26BAE000D954A /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		190183832BF26BBE000D954A /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		190183852BF26BCC000D954A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		194F78D92BE97DCA004ABCA0 /* PopcornSwirl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PopcornSwirl.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		194F78DC2BE97DCA004ABCA0 /* PopcornSwirlApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopcornSwirlApp.swift; sourceTree = "<group>"; };
 		194F78DE2BE97DCA004ABCA0 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -88,6 +94,9 @@
 		194F78D02BE97DCA004ABCA0 = {
 			isa = PBXGroup;
 			children = (
+				190183812BF26BAE000D954A /* .gitignore */,
+				190183832BF26BBE000D954A /* LICENSE */,
+				190183852BF26BCC000D954A /* README.md */,
 				194F78DB2BE97DCA004ABCA0 /* PopcornSwirl */,
 				194F78EE2BE97DCE004ABCA0 /* PopcornSwirlTests */,
 				194F78F82BE97DCE004ABCA0 /* PopcornSwirlUITests */,
@@ -253,6 +262,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				194F78E62BE97DCE004ABCA0 /* Preview Assets.xcassets in Resources */,
+				190183822BF26BAE000D954A /* .gitignore in Resources */,
+				190183862BF26BCC000D954A /* README.md in Resources */,
+				190183842BF26BBE000D954A /* LICENSE in Resources */,
 				194F78E32BE97DCE004ABCA0 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
