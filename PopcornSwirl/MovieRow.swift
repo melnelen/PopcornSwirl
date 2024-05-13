@@ -30,5 +30,5 @@ struct MovieRow: View {
 }
 
 #Preview {
-    MovieRow(movie: Movie(title: "Example Movie 1", category: ["Latest"]))
+    MovieRow(movie: Movie(title: "Example Movie 1", category: ["Latest"], genres: ["Action"], info: "A great action movie.", posterURL: URL(string: "https://example.com/movie1.jpg")!, releaseDate: Date()))
 }

@@ -8,11 +8,21 @@
 import SwiftUI
 
 struct MovieCardView: View {
+    var imageURL: URL?
+
     var body: some View {
-        Image(systemName: "bookmark")
-            .frame(width: 150, height: 150)
-            .background(Color.gray)
-            .cornerRadius(20)
+        AsyncImage(url: imageURL) { image in
+            image
+                .resizable()
+                .scaledToFit()
+        } placeholder: {
+            Image("movie-placeholder") // Placeholder image
+                .resizable()
+                .scaledToFit()
+        }
+        .frame(width: 150, height: 150)
+        .cornerRadius(20)
+        .padding()
     }
 }
 

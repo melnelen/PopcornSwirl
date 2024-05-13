@@ -31,5 +31,5 @@ struct MovieDetailView: View {
 }
 
 #Preview {
-    MovieDetailView(movie: Movie(title: "Example Movie 1", category: ["Latest"]))
+    MovieDetailView(movie: Movie(title: "Example Movie 1", category: ["Latest"], genres: ["Action"], info: "A great action movie.", posterURL: URL(string: "https://example.com/movie1.jpg")!, releaseDate: Date()))
 }

@@ -21,7 +21,8 @@ struct MovieListView: View {
     
     // Placeholder for movies array
     private var movies: [Movie] {
-        [Movie(title: "Example Movie 1", category: ["Latest"]), Movie(title: "Example Movie 2", category: ["Latest"])]
+        [Movie(title: "Example Movie 1", category: ["Latest"], genres: ["Action"], info: "A great action movie.", posterURL: URL(string: "https://example.com/movie1.jpg")!, releaseDate: Date()),
+         Movie(title: "Example Movie 2", category: ["Latest"], genres: ["Comedy"], info: "A hilarious comedy.", posterURL: URL(string: "https://example.com/movie2.jpg")!, releaseDate: Date())]
     }
 }
 
