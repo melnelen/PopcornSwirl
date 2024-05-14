@@ -28,7 +28,7 @@ struct HomeView: View {
                 LazyVStack(alignment: .leading, pinnedViews: .sectionHeaders) {
                     ForEach(movieCategories, id: \.self) { category in
                         VStack(alignment: .leading) {
-                            NavigationLink(destination: MovieListView(category: category)) {
+                            NavigationLink(destination: MovieListView(category: category, movies: movies.filter { $0.category.contains(category) })) {
                                 TitleLabelView(text: category)
                             }
                             

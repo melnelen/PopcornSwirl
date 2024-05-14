@@ -18,12 +18,10 @@ struct MoviesCarouselView: View {
                         MovieCardView(imageURL: movie.posterURL)
                     }
                     .buttonStyle(PlainButtonStyle())
-                    .frame(width: 150, height: 150)
                 }
             }
             .padding(.leading, 15)
         }
-        .frame(height: 170)
     }
 }
 

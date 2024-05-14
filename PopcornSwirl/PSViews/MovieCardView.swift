@@ -14,15 +14,14 @@ struct MovieCardView: View {
         AsyncImage(url: imageURL) { image in
             image
                 .resizable()
-                .scaledToFit()
+                .scaledToFill()
         } placeholder: {
             Image("movie-placeholder") // Placeholder image
                 .resizable()
-                .scaledToFit()
+                .scaledToFill()
         }
-        .frame(width: 150, height: 150)
-        .cornerRadius(20)
-        .padding()
+        .frame(width: 100, height: 150)
+        .cornerRadius(10)
     }
 }
 
