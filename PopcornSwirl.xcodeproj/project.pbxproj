@@ -29,6 +29,8 @@
 		194F79132BEA3DAC004ABCA0 /* MovieRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194F79122BEA3DAC004ABCA0 /* MovieRowView.swift */; };
 		194F79152BEA40E8004ABCA0 /* MovieCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194F79142BEA40E8004ABCA0 /* MovieCardView.swift */; };
 		19D1D4C32BF411B600F29094 /* MovieSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19D1D4C22BF411B600F29094 /* MovieSummaryView.swift */; };
+		19D1D4C52BF8078000F29094 /* PrimaryButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19D1D4C42BF8078000F29094 /* PrimaryButtonView.swift */; };
+		19D1D4C72BF8097A00F29094 /* SecondaryButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19D1D4C62BF8097A00F29094 /* SecondaryButtonView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +76,8 @@
 		194F79122BEA3DAC004ABCA0 /* MovieRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieRowView.swift; sourceTree = "<group>"; };
 		194F79142BEA40E8004ABCA0 /* MovieCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCardView.swift; sourceTree = "<group>"; };
 		19D1D4C22BF411B600F29094 /* MovieSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieSummaryView.swift; sourceTree = "<group>"; };
+		19D1D4C42BF8078000F29094 /* PrimaryButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButtonView.swift; sourceTree = "<group>"; };
+		19D1D4C62BF8097A00F29094 /* SecondaryButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryButtonView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				190183902BF2C804000D954A /* Screens */,
+				190183912BF2C8B3000D954A /* PSViews */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -130,6 +135,8 @@
 				194F79122BEA3DAC004ABCA0 /* MovieRowView.swift */,
 				194F79142BEA40E8004ABCA0 /* MovieCardView.swift */,
 				19D1D4C22BF411B600F29094 /* MovieSummaryView.swift */,
+				19D1D4C42BF8078000F29094 /* PrimaryButtonView.swift */,
+				19D1D4C62BF8097A00F29094 /* SecondaryButtonView.swift */,
 				194F79102BEA17DB004ABCA0 /* AdView.swift */,
 			);
 			path = PSViews;
@@ -171,7 +178,6 @@
 			children = (
 				194F78DC2BE97DCA004ABCA0 /* PopcornSwirlApp.swift */,
 				1901838F2BF2C7F2000D954A /* Views */,
-				190183912BF2C8B3000D954A /* PSViews */,
 				190183922BF2C957000D954A /* Model */,
 				194F78E22BE97DCE004ABCA0 /* Assets.xcassets */,
 				194F78E42BE97DCE004ABCA0 /* Preview Content */,
@@ -339,6 +345,8 @@
 			files = (
 				190183882BF2962D000D954A /* TitleLabelView.swift in Sources */,
 				1901838A2BF29862000D954A /* MoviesCarouselView.swift in Sources */,
+				19D1D4C52BF8078000F29094 /* PrimaryButtonView.swift in Sources */,
+				19D1D4C72BF8097A00F29094 /* SecondaryButtonView.swift in Sources */,
 				194F790B2BE982AC004ABCA0 /* MovieDetailView.swift in Sources */,
 				194F79132BEA3DAC004ABCA0 /* MovieRowView.swift in Sources */,
 				194F78DF2BE97DCA004ABCA0 /* HomeView.swift in Sources */,

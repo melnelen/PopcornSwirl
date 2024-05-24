@@ -14,18 +14,18 @@ struct MovieDetailView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
-                Text(movie.title).font(.title)
-                TextField("Add a note...", text: $note)
-                Button("Bookmark") {
-                    // Bookmark action
-                }
-                Button("Mark as Watched") {
-                    // Watched action
-                }
-                Spacer()
+                MovieRowView(movie: movie)
+                
+                Text(movie.info).padding()
+                
+                TextField("Add a note...", text: $note).padding()
+                
+                PrimaryButtonView(text: "Favorite")
+                
+                SecondaryButtonView(text: "Mark as Watched")
+                
                 AdView()
             }
-            .padding()
         }
     }
 }
