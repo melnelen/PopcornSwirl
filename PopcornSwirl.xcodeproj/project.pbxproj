@@ -28,6 +28,9 @@
 		194F79112BEA17DB004ABCA0 /* AdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194F79102BEA17DB004ABCA0 /* AdView.swift */; };
 		194F79132BEA3DAC004ABCA0 /* MovieRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194F79122BEA3DAC004ABCA0 /* MovieRowView.swift */; };
 		194F79152BEA40E8004ABCA0 /* MovieCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194F79142BEA40E8004ABCA0 /* MovieCardView.swift */; };
+		19B0B9292C09F44B00CBF4E4 /* DataServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B0B9282C09F44B00CBF4E4 /* DataServiceProtocol.swift */; };
+		19B0B92B2C09F46400CBF4E4 /* MockDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B0B92A2C09F46400CBF4E4 /* MockDataService.swift */; };
+		19B0B92E2C09F7E000CBF4E4 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B0B92D2C09F7E000CBF4E4 /* HomeViewModel.swift */; };
 		19D1D4C32BF411B600F29094 /* MovieSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19D1D4C22BF411B600F29094 /* MovieSummaryView.swift */; };
 		19D1D4C52BF8078000F29094 /* PrimaryButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19D1D4C42BF8078000F29094 /* PrimaryButtonView.swift */; };
 		19D1D4C72BF8097A00F29094 /* SecondaryButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19D1D4C62BF8097A00F29094 /* SecondaryButtonView.swift */; };
@@ -75,6 +78,9 @@
 		194F79102BEA17DB004ABCA0 /* AdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdView.swift; sourceTree = "<group>"; };
 		194F79122BEA3DAC004ABCA0 /* MovieRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieRowView.swift; sourceTree = "<group>"; };
 		194F79142BEA40E8004ABCA0 /* MovieCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCardView.swift; sourceTree = "<group>"; };
+		19B0B9282C09F44B00CBF4E4 /* DataServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataServiceProtocol.swift; sourceTree = "<group>"; };
+		19B0B92A2C09F46400CBF4E4 /* MockDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataService.swift; sourceTree = "<group>"; };
+		19B0B92D2C09F7E000CBF4E4 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		19D1D4C22BF411B600F29094 /* MovieSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieSummaryView.swift; sourceTree = "<group>"; };
 		19D1D4C42BF8078000F29094 /* PrimaryButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButtonView.swift; sourceTree = "<group>"; };
 		19D1D4C62BF8097A00F29094 /* SecondaryButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryButtonView.swift; sourceTree = "<group>"; };
@@ -178,7 +184,9 @@
 			children = (
 				194F78DC2BE97DCA004ABCA0 /* PopcornSwirlApp.swift */,
 				1901838F2BF2C7F2000D954A /* Views */,
+				19B0B92C2C09F7B600CBF4E4 /* ViewModel */,
 				190183922BF2C957000D954A /* Model */,
+				19B0B9272C09F42800CBF4E4 /* Sevices */,
 				194F78E22BE97DCE004ABCA0 /* Assets.xcassets */,
 				194F78E42BE97DCE004ABCA0 /* Preview Content */,
 			);
@@ -208,6 +216,23 @@
 				194F78FB2BE97DCE004ABCA0 /* PopcornSwirlUITestsLaunchTests.swift */,
 			);
 			path = PopcornSwirlUITests;
+			sourceTree = "<group>";
+		};
+		19B0B9272C09F42800CBF4E4 /* Sevices */ = {
+			isa = PBXGroup;
+			children = (
+				19B0B9282C09F44B00CBF4E4 /* DataServiceProtocol.swift */,
+				19B0B92A2C09F46400CBF4E4 /* MockDataService.swift */,
+			);
+			path = Sevices;
+			sourceTree = "<group>";
+		};
+		19B0B92C2C09F7B600CBF4E4 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				19B0B92D2C09F7E000CBF4E4 /* HomeViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -343,16 +368,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19B0B92E2C09F7E000CBF4E4 /* HomeViewModel.swift in Sources */,
 				190183882BF2962D000D954A /* TitleLabelView.swift in Sources */,
 				1901838A2BF29862000D954A /* MoviesCarouselView.swift in Sources */,
 				19D1D4C52BF8078000F29094 /* PrimaryButtonView.swift in Sources */,
 				19D1D4C72BF8097A00F29094 /* SecondaryButtonView.swift in Sources */,
 				194F790B2BE982AC004ABCA0 /* MovieDetailView.swift in Sources */,
+				19B0B9292C09F44B00CBF4E4 /* DataServiceProtocol.swift in Sources */,
 				194F79132BEA3DAC004ABCA0 /* MovieRowView.swift in Sources */,
 				194F78DF2BE97DCA004ABCA0 /* HomeView.swift in Sources */,
 				194F790F2BEA162C004ABCA0 /* ContentView.swift in Sources */,
 				194F79152BEA40E8004ABCA0 /* MovieCardView.swift in Sources */,
 				194F79112BEA17DB004ABCA0 /* AdView.swift in Sources */,
+				19B0B92B2C09F46400CBF4E4 /* MockDataService.swift in Sources */,
 				19D1D4C32BF411B600F29094 /* MovieSummaryView.swift in Sources */,
 				1901838E2BF2BC1E000D954A /* WatchedView.swift in Sources */,
 				1901838C2BF2BC07000D954A /* FavoritesView.swift in Sources */,
