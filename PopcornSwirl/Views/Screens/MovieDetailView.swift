@@ -12,6 +12,7 @@ struct MovieDetailView: View {
     let movieId: Int
     let movieTitle: String
     @StateObject private var movieDetailViewModel = MovieDetailViewModel()
+    @ObservedObject private var favoritesManager = FavoritesManager.shared
     
     var body: some View {
         List {
@@ -21,6 +22,18 @@ struct MovieDetailView: View {
                     .listRowSeparator(.hidden)
                 
                 MovieDetailListView(movie: movie)
+                
+                Button(action: {
+                    toggleFavorite(movie: movie)
+                }) {
+                    Text(favoritesManager.isFavorite(movie: movie) ? "Remove from Favorites" : "Add to Favorites")
+                        .frame(maxWidth: .infinity, alignment: .center)
+                        .padding()
+                        .background(Color.accentColor)
+                        .foregroundColor(.white)
+                        .cornerRadius(8)
+                }
+                .padding()
             }
         }
         .listStyle(.plain)
@@ -41,6 +54,14 @@ struct MovieDetailView: View {
     @MainActor
     private func loadMovie() async {
         await self.movieDetailViewModel.loadMovie(id: self.movieId)
+    }
+    
+    private func toggleFavorite(movie: Movie) {
+        if favoritesManager.isFavorite(movie: movie) {
+            favoritesManager.remove(movie: movie)
+        } else {
+            favoritesManager.add(movie: movie)
+        }
     }
 }
 

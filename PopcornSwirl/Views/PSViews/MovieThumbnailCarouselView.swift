@@ -33,7 +33,6 @@ struct MovieThumbnailCarouselView: View {
                 .padding(.vertical, 8)
             }
         }
-        
     }
 }
 
@@ -50,20 +49,9 @@ fileprivate extension View {
                 .frame(height: 160)
         }
     }
-    
 }
 
-
-struct MoviePosterCarouselView_Previews: PreviewProvider {
-    
-    static let stubbedMovies = Movie.stubbedMovies
-    
-    static var previews: some View {
-        Group {
-            MovieThumbnailCarouselView(title: "Now Playing", movies: stubbedMovies, thumbnailType: .poster(showTitle: true))
-            
-            MovieThumbnailCarouselView(title: "Upcoming", movies: stubbedMovies, thumbnailType: .backdrop)
-        }
-        
-    }
+#Preview {
+    MovieThumbnailCarouselView(title: "Now Playing", movies: Movie.stubbedMovies, thumbnailType: .poster(showTitle: true))
+        .previewLayout(.sizeThatFits)
 }

@@ -8,7 +8,7 @@
 import Foundation
 //import SwiftData
 
-struct Movie: Decodable, Identifiable, Hashable {
+struct Movie: Codable, Identifiable, Hashable {
     static func == (lhs: Movie, rhs: Movie) -> Bool {
         lhs.id == rhs.id
     }

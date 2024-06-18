@@ -7,7 +7,10 @@
 
 import Foundation
 
-struct MovieCredit: Decodable {
+struct MovieCredit: Codable, Hashable, Equatable {
+    static func == (lhs: MovieCredit, rhs: MovieCredit) -> Bool {
+        lhs.cast == rhs.cast && lhs.crew == rhs.crew
+    }
     
     let cast: [MovieCast]
     let crew: [MovieCrew]

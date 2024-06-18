@@ -12,10 +12,22 @@ struct MovieThumbnailView: View {
     let movie: Movie
     var thumbnailType: MovieThumbnailType = .poster()
     @StateObject var movieThumbnailViewModel = MovieThumbnailViewModel()
+    @ObservedObject private var favoritesManager = FavoritesManager.shared
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
-            ImageView(movie: movie, thumbnailType: thumbnailType, movieThumbnailViewModel: movieThumbnailViewModel)
+            ZStack(alignment: .topTrailing) {
+                ImageView(movie: movie, thumbnailType: thumbnailType, movieThumbnailViewModel: movieThumbnailViewModel)
+                
+                if favoritesManager.isFavorite(movie: movie) {
+                    Image(systemName: "star.fill")
+                        .foregroundColor(.yellow)
+                        .padding(5)
+                        .background(Color.black.opacity(0.7))
+                        .clipShape(Circle())
+                        .padding([.top, .trailing], 8)
+                }
+            }
             Text(movie.title)
                 .font(.headline)
                 .lineLimit(1)

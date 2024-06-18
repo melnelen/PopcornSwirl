@@ -11,30 +11,27 @@ struct HomeView: View {
     @StateObject private var homeState = HomeViewModel()
     
     var body: some View {
-        NavigationView {
-            ScrollView {
-                ForEach(homeState.sections) {
-                    MovieThumbnailCarouselView(
-                        title: $0.title,
-                        movies: $0.movies,
-                        thumbnailType: $0.thumbnailType)
-                }
-                .listRowInsets(.init(top: 8, leading: 0, bottom: 8, trailing: 0))
-                .listRowSeparator(.hidden)
+        ScrollView {
+            ForEach(homeState.sections) { section in
+                MovieThumbnailCarouselView(
+                    title: section.title,
+                    movies: section.movies,
+                    thumbnailType: section.thumbnailType)
             }
-            .task { loadMovies(invalidateCache: false) }
-            .refreshable { loadMovies(invalidateCache: true) }
-            .overlay(DataFetchPhaseOverlayView(
-                phase: homeState.phase,
-                retryAction: { loadMovies(invalidateCache: true) })
-            )
-            .navigationTitle("PopcornSwirl")
+            .listRowInsets(.init(top: 8, leading: 0, bottom: 8, trailing: 0))
+            .listRowSeparator(.hidden)
         }
+        .task { await loadMovies(invalidateCache: false) }
+        .refreshable { await loadMovies(invalidateCache: true) }
+        .overlay(DataFetchPhaseOverlayView(
+            phase: homeState.phase,
+            retryAction: { Task { await loadMovies(invalidateCache: true) } })
+        )
     }
     
     @MainActor
-    private func loadMovies(invalidateCache: Bool) {
-        Task { await homeState.loadMoviesFromAllEndpoints(invalidateCache: invalidateCache) }
+    private func loadMovies(invalidateCache: Bool) async {
+        await homeState.loadMoviesFromAllEndpoints(invalidateCache: invalidateCache)
     }
 }
 

@@ -7,7 +7,6 @@
 
 import Foundation
 
-struct MovieGenre: Decodable {
-    
+struct MovieGenre: Codable, Hashable {
     let name: String
 }

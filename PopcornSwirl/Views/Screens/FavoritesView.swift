@@ -8,11 +8,19 @@
 import SwiftUI
 
 struct FavoritesView: View {
+    @ObservedObject private var favoritesManager = FavoritesManager.shared
+    
     var body: some View {
         NavigationView {
-            Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+            List {
+                ForEach(favoritesManager.favoriteMovies) { movie in
+                    NavigationLink(destination: MovieDetailView(movieId: movie.id, movieTitle: movie.title)) {
+                        Text(movie.title)
+                    }
+                }
+            }
+            .navigationTitle("Favorites")
         }
-        .navigationTitle("Favorites")
     }
 }
 
