@@ -8,28 +8,42 @@
 import SwiftUI
 
 struct MovieDetailView: View {
-    var movie: Movie
-    @State private var note: String = ""
+    
+    let movieId: Int
+    let movieTitle: String
+    @StateObject private var movieDetailViewModel = MovieDetailViewModel()
     
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading) {
-                MovieRowView(movie: movie)
+        List {
+            if let movie = movieDetailViewModel.movie {
+                MovieDetailImage(imageURL: movie.backdropURL)
+                    .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+                    .listRowSeparator(.hidden)
                 
-                Text(movie.info).padding()
-                
-                TextField("Add a note...", text: $note).padding()
-                
-                PrimaryButtonView(text: "Favorite")
-                
-                SecondaryButtonView(text: "Mark as Watched")
-                
-                AdView()
+                MovieDetailListView(movie: movie)
             }
         }
+        .listStyle(.plain)
+        .task {
+            await loadMovie()
+        }
+        .overlay(DataFetchPhaseOverlayView(
+            phase: movieDetailViewModel.phase,
+            retryAction: {
+                Task {
+                    await loadMovie()
+                }
+            }
+        ))
+        .navigationTitle(movieTitle)
+    }
+    
+    @MainActor
+    private func loadMovie() async {
+        await self.movieDetailViewModel.loadMovie(id: self.movieId)
     }
 }
 
 #Preview {
-    MovieDetailView(movie: Movie(title: "Example Movie 1", category: ["Latest"], genres: ["Action"], info: "A great action movie.", posterURL: URL(string: "https://example.com/movie1.jpg")!, releaseDate: Date()))
+    MovieDetailView(movieId: Movie.stubbedMovie.id, movieTitle: "Bloodshot")
 }

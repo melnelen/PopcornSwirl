@@ -8,37 +8,33 @@
 import SwiftUI
 
 struct HomeView: View {
-    private var movieCategories: [String] = ["Latest", "Popular", "Award-Winnig", "Family-Friendly"]
-    private var movies: [Movie] = [
-        Movie(title: "Example Movie 1", category: ["Latest"], genres: ["Action"], info: "A great action movie.", posterURL: URL(string: "https://example.com/movie1.jpg")!, releaseDate: Date()),
-        Movie(title: "Example Movie 2", category: ["Popular"], genres: ["Comedy"], info: "A hilarious comedy.", posterURL: URL(string: "https://example.com/movie2.jpg")!, releaseDate: Date()),
-        Movie(title: "Example Movie 3", category: ["Award-Winnig"], genres: ["Drama"], info: "A sad drama.", posterURL: URL(string: "https://example.com/movie2.jpg")!, releaseDate: Date()),
-        Movie(title: "Example Movie 1", category: ["Latest"], genres: ["Action"], info: "A great action movie.", posterURL: URL(string: "https://example.com/movie1.jpg")!, releaseDate: Date()),
-        Movie(title: "Example Movie 2", category: ["Popular"], genres: ["Comedy"], info: "A hilarious comedy.", posterURL: URL(string: "https://example.com/movie2.jpg")!, releaseDate: Date()),
-        Movie(title: "Example Movie 3", category: ["Award-Winnig"], genres: ["Drama"], info: "A sad drama.", posterURL: URL(string: "https://example.com/movie2.jpg")!, releaseDate: Date()),
-        Movie(title: "Example Movie 1", category: ["Latest"], genres: ["Action"], info: "A great action movie.", posterURL: URL(string: "https://example.com/movie1.jpg")!, releaseDate: Date()),
-        Movie(title: "Example Movie 1", category: ["Latest"], genres: ["Action"], info: "A great action movie.", posterURL: URL(string: "https://example.com/movie1.jpg")!, releaseDate: Date()),
-        Movie(title: "Example Movie 2", category: ["Popular"], genres: ["Comedy"], info: "A hilarious comedy.", posterURL: URL(string: "https://example.com/movie2.jpg")!, releaseDate: Date()),
-        Movie(title: "Example Movie 3", category: ["Family-Friendly"], genres: ["Drama"], info: "A sad drama.", posterURL: URL(string: "https://example.com/movie2.jpg")!, releaseDate: Date())
-    ]
+    @StateObject private var homeState = HomeViewModel()
     
     var body: some View {
         NavigationView {
             ScrollView {
-                LazyVStack(alignment: .leading, pinnedViews: .sectionHeaders) {
-                    ForEach(movieCategories, id: \.self) { category in
-                        VStack(alignment: .leading) {
-                            NavigationLink(destination: MovieListView(category: category, movies: movies.filter { $0.category.contains(category) })) {
-                                TitleLabelView(text: category)
-                            }
-                            
-                            MoviesCarouselView(movies: movies.filter { $0.category.contains(category) })
-                        }
-                    }
+                ForEach(homeState.sections) {
+                    MovieThumbnailCarouselView(
+                        title: $0.title,
+                        movies: $0.movies,
+                        thumbnailType: $0.thumbnailType)
                 }
+                .listRowInsets(.init(top: 8, leading: 0, bottom: 8, trailing: 0))
+                .listRowSeparator(.hidden)
             }
+            .task { loadMovies(invalidateCache: false) }
+            .refreshable { loadMovies(invalidateCache: true) }
+            .overlay(DataFetchPhaseOverlayView(
+                phase: homeState.phase,
+                retryAction: { loadMovies(invalidateCache: true) })
+            )
             .navigationTitle("PopcornSwirl")
         }
+    }
+    
+    @MainActor
+    private func loadMovies(invalidateCache: Bool) {
+        Task { await homeState.loadMoviesFromAllEndpoints(invalidateCache: invalidateCache) }
     }
 }
 
