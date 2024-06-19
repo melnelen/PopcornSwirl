@@ -13,11 +13,23 @@ struct MovieThumbnailView: View {
     var thumbnailType: MovieThumbnailType = .poster()
     @StateObject var movieThumbnailViewModel = MovieThumbnailViewModel()
     @ObservedObject private var favoritesManager = FavoritesManager.shared
+    @ObservedObject private var watchedManager = WatchedManager.shared
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             ZStack(alignment: .topTrailing) {
-                ImageView(movie: movie, thumbnailType: thumbnailType, movieThumbnailViewModel: movieThumbnailViewModel)
+                ZStack(alignment: .bottomTrailing) {
+                    ImageView(movie: movie, thumbnailType: thumbnailType, movieThumbnailViewModel: movieThumbnailViewModel)
+                    
+                    if watchedManager.isWatched(movie: movie) {
+                        Image(systemName: "eye.fill")
+                            .foregroundColor(.blue)
+                            .padding(5)
+                            .background(Color.black.opacity(0.7))
+                            .clipShape(Circle())
+                            .padding([.bottom, .trailing], 8)
+                    }
+                }
                 
                 if favoritesManager.isFavorite(movie: movie) {
                     Image(systemName: "star.fill")

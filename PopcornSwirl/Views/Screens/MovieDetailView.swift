@@ -13,6 +13,7 @@ struct MovieDetailView: View {
     let movieTitle: String
     @StateObject private var movieDetailViewModel = MovieDetailViewModel()
     @ObservedObject private var favoritesManager = FavoritesManager.shared
+    @ObservedObject private var watchedManager = WatchedManager.shared
     
     var body: some View {
         List {
@@ -29,9 +30,23 @@ struct MovieDetailView: View {
                     Text(favoritesManager.isFavorite(movie: movie) ? "Remove from Favorites" : "Add to Favorites")
                         .frame(maxWidth: .infinity, alignment: .center)
                         .padding()
-                        .background(Color.accentColor)
                         .foregroundColor(.white)
-                        .cornerRadius(8)
+                        .background(Color.accentColor)
+                        .cornerRadius(25)
+                        .padding(.horizontal, 20)
+                }
+                .padding()
+                
+                Button(action: {
+                    toggleWatched(movie: movie)
+                }) {
+                    Text(watchedManager.isWatched(movie: movie) ? "Mark as Unwatched" : "Mark as Watched")
+                        .frame(maxWidth: .infinity, alignment: .center)
+                        .padding()
+                        .foregroundColor(.white)
+                        .background(.blue)
+                        .cornerRadius(25)
+                        .padding(.horizontal, 20)
                 }
                 .padding()
             }
@@ -61,6 +76,14 @@ struct MovieDetailView: View {
             favoritesManager.remove(movie: movie)
         } else {
             favoritesManager.add(movie: movie)
+        }
+    }
+    
+    private func toggleWatched(movie: Movie) {
+        if watchedManager.isWatched(movie: movie) {
+            watchedManager.remove(movie: movie)
+        } else {
+            watchedManager.add(movie: movie)
         }
     }
 }
