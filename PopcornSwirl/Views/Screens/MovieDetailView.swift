@@ -15,8 +15,12 @@ struct MovieDetailView: View {
     @ObservedObject private var favoritesManager = FavoritesManager.shared
     @ObservedObject private var watchedManager = WatchedManager.shared
     
+    private var randomAd: Ad {
+            return ads.randomElement()!
+        }
+    
     var body: some View {
-        List {
+        ScrollView {
             if let movie = movieDetailViewModel.movie {
                 MovieDetailImage(imageURL: movie.backdropURL)
                     .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
@@ -49,9 +53,11 @@ struct MovieDetailView: View {
                         .padding(.horizontal, 20)
                 }
                 .padding()
+                
+                AdView(ad: randomAd)
+                    .padding()
             }
         }
-        .listStyle(.plain)
         .task {
             await loadMovie()
         }

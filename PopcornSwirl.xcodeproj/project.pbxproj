@@ -52,6 +52,7 @@
 		19A8F2862C22149D00097C88 /* MovieResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A8F2852C22149D00097C88 /* MovieResponse.swift */; };
 		19A8F2882C221BE600097C88 /* FavoritesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A8F2872C221BE600097C88 /* FavoritesManager.swift */; };
 		19A8F28E2C22C90100097C88 /* WatchedManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A8F28D2C22C90100097C88 /* WatchedManager.swift */; };
+		19A8F2922C22D47900097C88 /* Ad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A8F2912C22D47900097C88 /* Ad.swift */; };
 		19B0B92E2C09F7E000CBF4E4 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B0B92D2C09F7E000CBF4E4 /* HomeViewModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -121,6 +122,7 @@
 		19A8F2852C22149D00097C88 /* MovieResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieResponse.swift; sourceTree = "<group>"; };
 		19A8F2872C221BE600097C88 /* FavoritesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesManager.swift; sourceTree = "<group>"; };
 		19A8F28D2C22C90100097C88 /* WatchedManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchedManager.swift; sourceTree = "<group>"; };
+		19A8F2912C22D47900097C88 /* Ad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ad.swift; sourceTree = "<group>"; };
 		19B0B92D2C09F7E000CBF4E4 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -198,6 +200,7 @@
 				192DFA962C0A0D8C005CCCC9 /* MovieSelection.swift */,
 				194C41542C134C900000E611 /* DataFetchPhrase.swift */,
 				19A8F2792C21E01F00097C88 /* MovieThumbnailType.swift */,
+				19A8F2912C22D47900097C88 /* Ad.swift */,
 				192DFA942C0A0D48005CCCC9 /* Extentions.swift */,
 			);
 			path = Model;
@@ -453,6 +456,7 @@
 				194F790B2BE982AC004ABCA0 /* MovieDetailView.swift in Sources */,
 				19A8F2802C22140A00097C88 /* MovieCredit.swift in Sources */,
 				194C41592C1351F50000E611 /* RetryView.swift in Sources */,
+				19A8F2922C22D47900097C88 /* Ad.swift in Sources */,
 				19A8F27C2C21E25000097C88 /* ImageView.swift in Sources */,
 				19A8F2702C21CE1900097C88 /* MovieDetailImage.swift in Sources */,
 				194C41512C134B870000E611 /* DataFetchPhaseOverlayView.swift in Sources */,

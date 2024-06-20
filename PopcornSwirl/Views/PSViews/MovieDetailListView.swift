@@ -12,10 +12,11 @@ struct MovieDetailListView: View {
     let movie: Movie
     
     var body: some View {
-        movieDescriptionSection(movie: movie).listRowSeparator(.visible)
-        movieCastSection(movie: movie).listRowSeparator(.hidden)
+        movieDescriptionSection(movie: movie)
+            .padding()
+        movieCastSection(movie: movie)
+            .padding()
     }
-    
     
 }
 
