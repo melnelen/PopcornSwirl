@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct EmptyPlaceholderView: View {
-    
     let text: String
     let image: Image?
     

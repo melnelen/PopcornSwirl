@@ -11,7 +11,7 @@ protocol EmptyData {
     var isEmpty: Bool { get }
 }
 
-struct DataFetchPhaseOverlayView<V: EmptyData>: View {
+struct DataFetchPhaseOverlayView<V: Equatable & EmptyData>: View {
     
     let phase: DataFetchPhase<V>
     let retryAction: () -> ()
@@ -32,14 +32,15 @@ struct DataFetchPhaseOverlayView<V: EmptyData>: View {
 
 #Preview {
     Group {
-        DataFetchPhaseOverlayView(phase: .success([])) {
+        DataFetchPhaseOverlayView(phase: DataFetchPhase<[Movie]>.success([])) {
             print("Retry")
         }
         
-        DataFetchPhaseOverlayView<[Movie]>(phase: .empty) {
+        DataFetchPhaseOverlayView(phase: DataFetchPhase<[Movie]>.empty) {
             print("Retry")
         }
-        DataFetchPhaseOverlayView<Movie?>(phase: .failure(MovieError.invalidResponse)) {
+        
+        DataFetchPhaseOverlayView(phase: DataFetchPhase<Movie?>.failure(MovieError.invalidResponse)) {
             print("Retry")
         }
     }

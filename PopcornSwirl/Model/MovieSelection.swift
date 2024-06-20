@@ -7,12 +7,17 @@
 
 import Foundation
 
-struct MovieSection: Identifiable {
+struct MovieSection: Identifiable, Equatable {
+    static func == (lhs: MovieSection, rhs: MovieSection) -> Bool {
+        return lhs.id == rhs.id &&
+        lhs.movies == rhs.movies &&
+        lhs.endpoint == rhs.endpoint
+    }
     
     let id = UUID()
-    
     let movies: [Movie]
     let endpoint: MovieListEndpoint
+    
     var title: String {
         endpoint.description
     }

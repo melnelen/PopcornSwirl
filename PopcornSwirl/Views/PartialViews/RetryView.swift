@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct RetryView: View {
-    
     let text: String
     let retryAction: () -> ()
     

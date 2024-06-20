@@ -8,7 +8,7 @@
 import Foundation
 //import SwiftData
 
-struct Movie: Codable, Identifiable, Hashable {
+struct Movie: Codable, Identifiable, Hashable, Equatable, EmptyData {
     static func == (lhs: Movie, rhs: Movie) -> Bool {
         lhs.id == rhs.id
     }
@@ -29,6 +29,10 @@ struct Movie: Codable, Identifiable, Hashable {
     
     let genres: [MovieGenre]?
     let credits: MovieCredit?
+    
+    var isEmpty: Bool {
+            return title.isEmpty
+        }
     
     static private let yearFormatter: DateFormatter = {
         let formatter = DateFormatter()

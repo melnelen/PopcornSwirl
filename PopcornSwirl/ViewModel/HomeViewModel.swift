@@ -11,10 +11,14 @@ import Foundation
 class HomeViewModel: ObservableObject {
     
     @Published private(set) var phase: DataFetchPhase<[MovieSection]> = .empty
-    private let movieService: MovieService = MovieStore.shared
+    private let movieService: MovieService
     
     var sections: [MovieSection] {
         phase.value ?? []
+    }
+    
+    init(movieService: MovieService = MovieStore.shared) {
+        self.movieService = movieService
     }
     
     func loadMoviesFromAllEndpoints(invalidateCache: Bool) async {
@@ -22,7 +26,7 @@ class HomeViewModel: ObservableObject {
         if case .success = phase, !invalidateCache {
             return
         }
-
+        
         phase = .empty
         
         do {
@@ -36,42 +40,42 @@ class HomeViewModel: ObservableObject {
         
     }
     
-    private func fetchMoviesFromEndpoints(
+    func fetchMoviesFromEndpoints(
         _ endpoints: [MovieListEndpoint] = MovieListEndpoint.allCases) async throws -> [MovieSection] {
-        let results: [Result<MovieSection, Error>] = await withTaskGroup(of: Result<MovieSection, Error>.self) { group in
-            for endpoint in endpoints {
-                group.addTask { await self.fetchMoviesFromEndpoint(endpoint) }
+            let results: [Result<MovieSection, Error>] = await withTaskGroup(of: Result<MovieSection, Error>.self) { group in
+                for endpoint in endpoints {
+                    group.addTask { await self.fetchMoviesFromEndpoint(endpoint) }
+                }
+                
+                var results = [Result<MovieSection, Error>]()
+                for await result in group {
+                    results.append(result)
+                }
+                return results
             }
             
-            var results = [Result<MovieSection, Error>]()
-            for await result in group {
-                results.append(result)
+            var movieSections = [MovieSection]()
+            var errors = [Error]()
+            
+            results.forEach { result in
+                switch result {
+                case .success(let movieSection):
+                    movieSections.append(movieSection)
+                case .failure(let error):
+                    errors.append(error)
+                }
             }
-            return results
-        }
-        
-        var movieSections = [MovieSection]()
-        var errors = [Error]()
-        
-        results.forEach { result in
-            switch result {
-            case .success(let movieSection):
-                movieSections.append(movieSection)
-            case .failure(let error):
-                errors.append(error)
+            
+            if errors.count == results.count, let error = errors.first {
+                throw error
             }
+            
+            return movieSections.sorted { $0.endpoint.sortIndex < $1.endpoint.sortIndex }
+            
         }
-        
-        if errors.count == results.count, let error = errors.first {
-            throw error
-        }
-        
-        return movieSections.sorted { $0.endpoint.sortIndex < $1.endpoint.sortIndex }
-
-    }
     
     
-    private func fetchMoviesFromEndpoint(_ endpoint: MovieListEndpoint) async -> Result<MovieSection, Error> {
+    func fetchMoviesFromEndpoint(_ endpoint: MovieListEndpoint) async -> Result<MovieSection, Error> {
         do {
             let movies = try await movieService.fetchMovies(from: endpoint)
             return .success(.init(
@@ -94,10 +98,11 @@ fileprivate extension MovieListEndpoint {
             return 0
         case .upcoming:
             return 1
-        case .topRated:
-            return 2
         case .popular:
+            return 2
+        case .topRated:
             return 3
+            
         }
     }
     

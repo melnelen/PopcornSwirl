@@ -50,6 +50,7 @@ extension URL: Identifiable {
 }
 
 extension Array: EmptyData {}
+
 extension Optional: EmptyData {
     
     var isEmpty: Bool {
