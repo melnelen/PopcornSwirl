@@ -11,13 +11,13 @@ import Combine
 class WatchedManager: ObservableObject {
     static let shared = WatchedManager()
     
-    @Published private(set) var watchedMovies: [Movie] = [] {
+    @Published var watchedMovies: [Movie] = [] {
         didSet {
             saveWatchedMovies()
         }
     }
     
-    private let watchedKey = "watchedMovies"
+    let watchedKey = "watchedMovies"
     
     private init() {
         loadWatchedMovies()
@@ -37,7 +37,7 @@ class WatchedManager: ObservableObject {
         watchedMovies.contains(movie)
     }
     
-    private func saveWatchedMovies() {
+    func saveWatchedMovies() {
         do {
             let encodedData = try JSONEncoder().encode(watchedMovies)
             UserDefaults.standard.set(encodedData, forKey: watchedKey)
@@ -46,7 +46,7 @@ class WatchedManager: ObservableObject {
         }
     }
     
-    private func loadWatchedMovies() {
+    func loadWatchedMovies() {
         guard let data = UserDefaults.standard.data(forKey: watchedKey) else {
             return
         }

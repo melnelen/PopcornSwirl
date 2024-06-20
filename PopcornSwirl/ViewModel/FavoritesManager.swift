@@ -11,13 +11,13 @@ import Combine
 class FavoritesManager: ObservableObject {
     static let shared = FavoritesManager()
     
-    @Published private(set) var favoriteMovies: [Movie] = [] {
+    @Published var favoriteMovies: [Movie] = [] {
         didSet {
             saveFavorites()
         }
     }
     
-    private let favoritesKey = "favoriteMovies"
+    let favoritesKey = "favoriteMovies"
     
     private init() {
         loadFavorites()
@@ -37,7 +37,7 @@ class FavoritesManager: ObservableObject {
         favoriteMovies.contains(movie)
     }
     
-    private func saveFavorites() {
+    func saveFavorites() {
         do {
             let encodedData = try JSONEncoder().encode(favoriteMovies)
             UserDefaults.standard.set(encodedData, forKey: favoritesKey)
@@ -46,7 +46,7 @@ class FavoritesManager: ObservableObject {
         }
     }
     
-    private func loadFavorites() {
+    func loadFavorites() {
         guard let data = UserDefaults.standard.data(forKey: favoritesKey) else {
             return
         }
