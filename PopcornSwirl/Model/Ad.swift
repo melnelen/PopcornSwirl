@@ -12,6 +12,7 @@ struct Ad: Identifiable {
     let title: String
     let description: String
     let imageName: String
+    let url: URL = URL(string: "https://www.menkind.co.uk/merch")!
 }
 
 let ads: [Ad] = [

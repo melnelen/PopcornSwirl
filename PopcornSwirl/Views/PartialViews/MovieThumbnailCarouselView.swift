@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct MovieThumbnailCarouselView: View {
-    
     let title: String
     let movies: [Movie]
     var thumbnailType: MovieThumbnailType = .poster()
@@ -37,7 +36,6 @@ struct MovieThumbnailCarouselView: View {
 }
 
 fileprivate extension View {
-    
     @ViewBuilder
     func movieThumbnailViewFrame(thumbnailType: MovieThumbnailType) -> some View {
         switch thumbnailType {

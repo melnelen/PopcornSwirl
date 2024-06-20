@@ -8,47 +8,87 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var selection = 1
-    @State private var navigationStack = NavigationPath()
+    @State private var selection: Tab = .home
+    @State private var homeNavigationStack = NavigationPath()
+    @State private var favoritesNavigationStack = NavigationPath()
+    @State private var watchedNavigationStack = NavigationPath()
     
     var body: some View {
         TabView(selection: $selection) {
-            NavigationStack(path: $navigationStack) {
-                HomeView()
-                    .navigationTitle("PopcornSwirl")
-                    .onChange(of: selection) {
-                        navigationStack.removeLast(navigationStack.count)
-                    }
-            }
-            .tabItem {
-                Label("The Swirl", systemImage: "popcorn.fill")
-            }.tag(1)
+            homeNavigationView
+                .tabItem {
+                    Label("The Swirl", systemImage: "popcorn.fill")
+                }
+                .tag(Tab.home)
+                .navigationResetter(selection: $selection, tab: .home) {
+                    homeNavigationStack = NavigationPath()
+                }
             
-            NavigationStack(path: $navigationStack) {
-                FavoritesView()
-                    .navigationTitle("Favorites")
-                    .onChange(of: selection) {
-                        navigationStack.removeLast(navigationStack.count)
-                    }
-            }
-            .tabItem {
-                Label("Favorites", systemImage: "star.fill")
-            }.tag(2)
+            favoritesNavigationView
+                .tabItem {
+                    Label("Favorites", systemImage: "star.fill")
+                }
+                .tag(Tab.favorites)
+                .navigationResetter(selection: $selection, tab: .favorites) {
+                    favoritesNavigationStack = NavigationPath()
+                }
             
-            NavigationStack(path: $navigationStack) {
-                WatchedView()
-                    .navigationTitle("Watched")
-                    .onChange(of: selection) {
-                        navigationStack.removeLast(navigationStack.count)
-                    }
-            }
-            .tabItem {
-                Label("Watched", systemImage: "eye.fill")
-            }.tag(3)
+            watchedNavigationView
+                .tabItem {
+                    Label("Watched", systemImage: "eye.fill")
+                }
+                .tag(Tab.watched)
+                .navigationResetter(selection: $selection, tab: .watched) {
+                    watchedNavigationStack = NavigationPath()
+                }
+        }
+    }
+    
+    private var homeNavigationView: some View {
+        NavigationStack(path: $homeNavigationStack) {
+            HomeView()
+                .navigationTitle("PopcornSwirl")
+        }
+    }
+    
+    private var favoritesNavigationView: some View {
+        NavigationStack(path: $favoritesNavigationStack) {
+            FavoritesView()
+                .navigationTitle("Favorites")
+        }
+    }
+    
+    private var watchedNavigationView: some View {
+        NavigationStack(path: $watchedNavigationStack) {
+            WatchedView()
+                .navigationTitle("Watched")
         }
     }
 }
 
-#Preview {
-    ContentView()
+enum Tab {
+    case home
+    case favorites
+    case watched
+}
+
+struct NavigationResetter: ViewModifier {
+    @Binding var selection: Tab
+    let tab: Tab
+    let resetAction: () -> Void
+    
+    func body(content: Content) -> some View {
+        content
+            .onAppear {
+                if selection == tab {
+                    resetAction()
+                }
+            }
+    }
+}
+
+extension View {
+    func navigationResetter(selection: Binding<Tab>, tab: Tab, resetAction: @escaping () -> Void) -> some View {
+        self.modifier(NavigationResetter(selection: selection, tab: tab, resetAction: resetAction))
+    }
 }

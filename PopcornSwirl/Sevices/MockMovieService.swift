@@ -8,6 +8,8 @@
 import Foundation
 
 class MockMovieService: MovieService {
+    var movie: Movie?
+    var error: Error?
     var fetchMoviesResult: Result<[Movie], Error> = .success(Movie.stubbedMovies)
     
     func fetchMovies(from endpoint: MovieListEndpoint) async throws -> [Movie] {
@@ -20,6 +22,9 @@ class MockMovieService: MovieService {
     }
     
     func fetchMovie(id: Int) async throws -> Movie {
-        throw MovieError.apiError 
-    }
+        if let error = error {
+                throw error
+            }
+            return movie ?? Movie.stubbedMovie
+        }
 }
