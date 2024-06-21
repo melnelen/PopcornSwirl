@@ -14,6 +14,7 @@ struct MovieDetailView: View {
     @StateObject private var movieDetailViewModel = MovieDetailViewModel()
     @ObservedObject private var favoritesManager = FavoritesManager.shared
     @ObservedObject private var watchedManager = WatchedManager.shared
+    @ObservedObject private var noteManager = NoteManager.shared
     
     private var randomAd: Ad {
             return ads.randomElement()!
@@ -53,6 +54,9 @@ struct MovieDetailView: View {
                         .padding(.horizontal, 20)
                 }
                 .padding()
+                
+                NoteView(movieId: movie.id, noteText: noteManager.notes[movie.id] ?? "")
+                    .padding()
                 
                 AdView(ad: randomAd)
                     .padding()

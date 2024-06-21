@@ -5,7 +5,7 @@
 //  Created by Alexandra Ivanova on 31/05/2024.
 //
 
-import Foundation
+import SwiftUI
 
 extension Movie {
     
@@ -60,4 +60,10 @@ extension Optional: EmptyData {
         return false
     }
     
+}
+
+extension UIApplication {
+    func endEditing() {
+        sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
 }
